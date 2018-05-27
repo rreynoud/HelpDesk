@@ -8,4 +8,6 @@ public interface ChangeStatusRepository extends MongoRepository<ChangeStatus, St
 
 	Iterable<ChangeStatus> findByTicketIdOrderByDateChangeStatus(String ticketId);
 	
+	Iterable<ChangeStatus> findByTicketIdOrderByDateChangeStatusDesc(String idTicket);
+	
 }

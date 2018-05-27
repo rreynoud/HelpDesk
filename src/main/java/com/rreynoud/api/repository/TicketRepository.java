@@ -8,9 +8,10 @@ import com.rreynoud.entity.Ticket;
 
 public interface TicketRepository extends MongoRepository<Ticket, String> {
 
+	
 	Page<Ticket> findByUserIdOrderByDateDesc(Pageable pages, String userId);
 	 
-	Page<Ticket> findByTitleIgnoreCaseContainingAndStatusAndPriorityIgnoreCaseContainingOrderByDateDesc(String title, String status, String priority, Pageable pages);
+	Page<Ticket> findByTitleIgnoreCaseContainingAndStatusAndPriorityIgnoreCaseContainingOrderByDateDesc(String title, String status, String priority, Pageable pages);	
 	
 	Page<Ticket> findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignUserOrderByDateDesc(String title, String status, String priority,  Pageable pages);
 	

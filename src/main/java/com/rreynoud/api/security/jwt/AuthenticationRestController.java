@@ -39,8 +39,14 @@ public class AuthenticationRestController {
 	@PostMapping("/api/auth")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticatioinRequest authenticationRequest) throws Exception {
 		
-		final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+		try {
+			final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 		final String token = jwtTokenUtil.generateToken(userDetails);
