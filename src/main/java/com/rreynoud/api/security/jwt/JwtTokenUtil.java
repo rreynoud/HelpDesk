@@ -22,10 +22,11 @@ public class JwtTokenUtil implements Serializable {
 	static final String CLAIM_KEY_CREATED = "created";
 	static final String CLAIM_KEY_EXPIRED = "exp";
 
-	@Value("$jwt.secret")
+
+	@Value("${jwt.secret}")
 	private String secret;
 
-	@Value("$jwt.expiration")
+	@Value("${jwt.expiration}")
 	private Long expiration;
 
 	public String getUsernameFromToken(String authtoken) {
