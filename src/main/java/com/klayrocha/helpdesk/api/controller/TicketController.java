@@ -51,7 +51,7 @@ public class TicketController {
 	private UserService userService;
 	
 	@PostMapping()
-	@PreAuthorize("hasAnyRole('CUSTOMER')")
+	//@PreAuthorize("hasAnyRole('CUSTOMER')")
 	public ResponseEntity<Response<Ticket>> create(HttpServletRequest request, @RequestBody Ticket ticket,
 			BindingResult result) {
 		Response<Ticket> response = new Response<Ticket>();
